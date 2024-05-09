@@ -1,10 +1,13 @@
+import { Link } from "react-router-dom"
 
 const Home = () => {
   return (
     <div>
 
-      {/* slider */}
+   
       <div className="mt-10 mb-10">
+
+       {/* slider */}
       <div className="carousel w-full h-[550px]">
   <div id="slide1" className="carousel-item relative w-full">
     <img src="/slider1.jpg" className="w-full rounded-lg" />
@@ -29,13 +32,20 @@ const Home = () => {
   </div> 
   
 </div>
+     
+      {/* banner */}
+    <div className="mt-10 ">
+      <div className="relative">
+      <img className="w-full h-[500px] rounded-lg" src="HomeBanner.jpg" alt="" />
+      <div className="absolute flex justify-center items-center top-[47%] left-[45%]">
+      <Link to="/queries" type="button" className="px-8 py-3 font-semibold border rounded text-white">All Queries</Link>
       </div>
-
-    {/* banner */}
-    <div>
-      
+      </div>
     </div>
 
+      </div>
+
+   
     </div>
   )
 }

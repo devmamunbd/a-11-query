@@ -8,6 +8,7 @@ import MyQueries from "../Component/MyQueries/MyQueries";
 import MyReco from "../Component/MyReco/MyReco";
 import Login from "../Component/Login/Login";
 import Register from "../Component/Register/Register";
+import AddQueries from "../Component/AddQueries/AddQueries";
 
 export const router = createBrowserRouter([
     {
@@ -42,6 +43,10 @@ export const router = createBrowserRouter([
             {
                 path: '/login',
                 element: <Login></Login>
+            },
+            {
+                path: '/add',
+                element: <AddQueries></AddQueries>
             }
 
         ]
