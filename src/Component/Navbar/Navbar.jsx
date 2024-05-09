@@ -1,17 +1,34 @@
+/* eslint-disable no-unused-vars */
+import { useContext } from "react"
 import { Link, NavLink } from "react-router-dom"
+import { AuthContext } from "../../AuthProvider/AuthProvider"
 
 const Navbar = () => {
+
+  const {user, logOut} = useContext(AuthContext)
 
     const navlink = <>
     <li><NavLink to='/'>Home</NavLink></li>
     <li><NavLink to='/queries'>Queries</NavLink></li>
-    <li><NavLink to='/recoforme'>Recommendations For Me</NavLink></li>
-    <li><NavLink to='/myqueries'>My Queries</NavLink></li>
-    <li><NavLink to='/myreco'>My Recommendations</NavLink></li>
+    {
+      user &&  <li><NavLink to='/recoforme'>Reco For Me</NavLink></li>
+    }
+    {
+      user &&  <li><NavLink to='/myqueries'>My Queries</NavLink></li>
+    }
+    {
+      user &&   <li><NavLink to='/myreco'>My Reco</NavLink></li>
+    }
+    
     <li><NavLink to='/register'>Register</NavLink></li>
     <li><NavLink to='/login'>Log In</NavLink></li>
     
     </>
+
+
+  const handleLogOut=()=> {
+    logOut()
+  }
 
   return (
     <div>
@@ -33,7 +50,19 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn">Button</a>
+    {
+      user ? 
+      <div className="flex gap-2 items-center">
+        <div>
+        <div className="tooltip" data-tip={user?.displayName || 'name not fount'}>
+         <img src={user?.photoURL || "/slider1.jpg"} className="w-12 h-12 rounded-full" alt="" />
+      </div>
+        </div>
+          <button onClick={handleLogOut} className="btn">Log Out</button>
+      </div> 
+      :   <Link className="btn" to="/login">Login</Link>
+    }
+  
   </div>
 </div>
     </div>
