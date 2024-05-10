@@ -9,6 +9,7 @@ import MyReco from "../Component/MyReco/MyReco";
 import Login from "../Component/Login/Login";
 import Register from "../Component/Register/Register";
 import AddQueries from "../Component/AddQueries/AddQueries";
+import PrivateRoutes from "./PrivateRoutes";
 
 export const router = createBrowserRouter([
     {
@@ -30,7 +31,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/myqueries',
-                element: <MyQueries></MyQueries>
+                element:<PrivateRoutes> <MyQueries></MyQueries></PrivateRoutes>
             },
             {
                 path: '/myreco',
