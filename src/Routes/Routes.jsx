@@ -11,6 +11,7 @@ import Register from "../Component/Register/Register";
 import AddQueries from "../Component/AddQueries/AddQueries";
 import PrivateRoutes from "./PrivateRoutes";
 import ViewDetails from "../Component/ViewDetails/ViewDetails";
+import UpdateCart from "../Component/UpdateCart/UpdateCart";
 
 export const router = createBrowserRouter([
     {
@@ -54,6 +55,11 @@ export const router = createBrowserRouter([
                 path: '/details/:id',
                 element: <ViewDetails></ViewDetails>,
                 loader: ({params})=> fetch(`http://localhost:9000/details/${params.id}`)
+            }, 
+            {
+                path: '/update/:id',
+                element: <UpdateCart></UpdateCart>,
+                loader: ({params}) => fetch(`http://localhost:9000/update/${params.id}`)
             }
 
         ]

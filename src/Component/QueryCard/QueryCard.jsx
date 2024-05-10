@@ -1,10 +1,16 @@
+/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 
+// import axios from "axios";
 import { Link } from "react-router-dom";
 
-const QueryCard = ({item}) => {
+const QueryCard = ({item, handleDelete}) => {
     const {_id, pname, brand, query, image, count, boycott} = item;
+
+
+  
+
   return (
     <div className="w-[370px] p-6 rounded-md shadow-md dark:bg-gray-50 dark:text-gray-900">
 	<img src={image} alt="" className="object-contain  w-full rounded-md h-72 dark:bg-gray-500" />
@@ -18,8 +24,11 @@ const QueryCard = ({item}) => {
 
         <button className="bg-blue-600 text-white px-4 py-2 rounded-md">View Details</button>
         </Link>
+        <Link to={`/update/${_id}`}>
+
         <button className="bg-blue-600 text-white px-4 py-2 rounded-md">Update</button>
-        <button className="bg-blue-600 text-white px-4 py-2 rounded-md">Delete</button>
+        </Link>
+        <button onClick={() => handleDelete(_id)} className="bg-blue-600 text-white px-4 py-2 rounded-md">Delete</button>
     </div>
 </div>
   )

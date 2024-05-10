@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import QueryCard from "../QueryCard/QueryCard";
+import Swal from "sweetalert2";
 
 const MyQueries = () => {
 
@@ -18,6 +19,35 @@ const MyQueries = () => {
     })
   },[])
 
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    })
+   .then(()=> {
+     fetch(`http://localhost:9000/delete/${id}`, {
+        method: "DELETE"
+      })
+   })
+      .then(res => res.json())
+      .then(data => {
+        if (data.deletedCount > 0) {
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success"
+          });
+          const remaining = items.filter(item => item._id !== id)
+          setItems(remaining)
+        }
+        console.log(data)
+      })
+}
 
   
 
@@ -48,7 +78,7 @@ const MyQueries = () => {
 
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
     {
-      items.map(item => <QueryCard key={item._id} item={item}></QueryCard>)
+      items.map(item => <QueryCard key={item._id} item={item} handleDelete={handleDelete}></QueryCard>)
     }
     </div>
 
