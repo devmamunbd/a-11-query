@@ -1,20 +1,59 @@
-import { Link } from "react-router-dom"
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import QueryCard from "../QueryCard/QueryCard";
 
 const MyQueries = () => {
+
+  const {user} = useContext(AuthContext)
+  const [items, setItems] = useState([])
+
+  useEffect(()=> {
+    fetch(`http://localhost:9000/queries/${user?.email}`)
+    .then(res => res.json())
+    .then(data => {
+      setItems(data)
+    })
+  },[])
+
+
+  
+
   return (
     <div className="mt-10">
-
       <div className="">
-      <div className="relative">
-      <img className="w-full h-[300px] rounded-lg" src="HomeBanner.jpg" alt="" />
-      <div className="absolute flex justify-center items-center top-[47%] left-[45%]">
-      <Link to="/add" type="button" className="px-8 py-3 font-semibold border rounded text-white">Add Queries</Link>
+        <div className="relative">
+          <img
+            className="w-full h-[300px] rounded-lg"
+            src="HomeBanner.jpg"
+            alt=""
+          />
+          <div className="absolute flex justify-center items-center top-[47%] left-[45%]">
+            <Link
+              to="/add"
+              type="button"
+              className="px-8 py-3 font-semibold border rounded text-white"
+            >
+              Add Queries
+            </Link>
+          </div>
+        </div>
       </div>
-      </div>
-      </div>
+
+    <div className="mt-10">
+    <h1 className="text-center text-2xl font-bold mb-7">My Queries Card</h1>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+    {
+      items.map(item => <QueryCard key={item._id} item={item}></QueryCard>)
+    }
+    </div>
 
     </div>
-  )
-}
+  );
+};
 
-export default MyQueries
+export default MyQueries;

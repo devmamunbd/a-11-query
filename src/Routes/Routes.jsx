@@ -10,6 +10,7 @@ import Login from "../Component/Login/Login";
 import Register from "../Component/Register/Register";
 import AddQueries from "../Component/AddQueries/AddQueries";
 import PrivateRoutes from "./PrivateRoutes";
+import ViewDetails from "../Component/ViewDetails/ViewDetails";
 
 export const router = createBrowserRouter([
     {
@@ -48,6 +49,11 @@ export const router = createBrowserRouter([
             {
                 path: '/add',
                 element: <AddQueries></AddQueries>
+            },
+            {
+                path: '/details/:id',
+                element: <ViewDetails></ViewDetails>,
+                loader: ({params})=> fetch(`http://localhost:9000/details/${params.id}`)
             }
 
         ]

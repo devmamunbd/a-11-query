@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { AuthContext } from "../../AuthProvider/AuthProvider"
 import axios from "axios"
+import Swal from "sweetalert2"
 
 const AddQueries = () => {
 
@@ -21,10 +22,23 @@ const AddQueries = () => {
     const currentDate = new Date(Date.now())
 
     const userInfo = {name, email, photoURL, currentDate}
-    const addQueri = {pname, brand, image, query, boycott, count, userInfo}
+    const addQueri = {pname, brand, image, query, email, boycott, count, userInfo}
     console.log(addQueri)
 
     axios.post('http://localhost:9000/addquerie', addQueri)
+    .then(result => {
+      console.log(result)
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "Add Queries has been saved",
+        showConfirmButton: false,
+        timer: 1500
+      });
+    })
+    .catch(error => {
+      console.log(error)
+    })
     
    
   }
