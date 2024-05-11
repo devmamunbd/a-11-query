@@ -3,11 +3,8 @@ import { Link, useLoaderData } from "react-router-dom"
 const Queries = () => {
 
   const loadData = useLoaderData()
-  console.log(loadData)
-
-
   const sortedData = loadData.sort((a,b)=> new Date(b.currentDate) - new Date(a.currentDate))
-  console.log(sortedData)
+//   console.log(sortedData)
 
 
   return (
@@ -15,7 +12,7 @@ const Queries = () => {
       <h1 className="text-center text-black font-bold text-2xl">All Queries</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
           {
-            loadData.map(data => <div key={data._id}>
+            sortedData.map(data => <div key={data._id}>
               <div className="flex flex-col p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-50 dark:text-gray-800">
 	<div className="flex space-x-4">
 		<img alt="" src={data?.photoURL} className="object-contain w-12 h-12 rounded-full shadow dark:bg-gray-500" />
