@@ -28,28 +28,34 @@ const MyQueries = () => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!"
-    })
-   .then(()=> {
-     fetch(`http://localhost:9000/delete/${id}`, {
-        method: "DELETE"
-      })
-   })
-      .then(res => res.json())
-      .then(data => {
-        if (data.deletedCount > 0) {
-          Swal.fire({
-            title: "Deleted!",
-            text: "Your file has been deleted.",
-            icon: "success"
-          });
-          const remaining = items.filter(item => item._id !== id)
-          setItems(remaining)
-        }
-        console.log(data)
-      })
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:9000/delete/${id}`, {
+          method: "DELETE"
+        })
+        .then(res => res.json())
+        .then(data => {
+          if (data.deletedCount> 0) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success"
+            });
+          }
+        })
+        const remaining = items.filter(item => item._id !== id)
+        setItems(remaining)
+
+       
+      }
+    });
 }
 
-  
+
+
+
+
+
 
   return (
     <div className="mt-10">

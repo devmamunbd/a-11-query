@@ -32,7 +32,7 @@ const UpdateCart = () => {
                 Swal.fire({
                     position: "top-center",
                     icon: "success",
-                    title: "Your work has been saved",
+                    title: "Queries has been updated",
                     showConfirmButton: false,
                     timer: 1500
                   });
