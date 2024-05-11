@@ -21,11 +21,13 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home></Home>
+                element: <Home></Home>,
+                loader: ()=> fetch('http://localhost:9000/recent')
             },
             {
                 path: '/queries',
-                element: <Queries></Queries>
+                element: <Queries></Queries>,
+                loader: ()=> fetch('http://localhost:9000/queries')
             },
             {
                 path: '/recoforme',

@@ -22,7 +22,7 @@ const AddQueries = () => {
     const currentDate = new Date(Date.now())
 
     const userInfo = {name, email, photoURL, currentDate}
-    const addQueri = {pname, brand, image, query, email, boycott, count, userInfo}
+    const addQueri = {pname, brand, image, query, email, boycott, count,currentDate,name, photoURL, userInfo}
     console.log(addQueri)
 
     axios.post('http://localhost:9000/addquerie', addQueri)
