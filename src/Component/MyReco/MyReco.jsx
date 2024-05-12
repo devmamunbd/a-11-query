@@ -15,6 +15,17 @@ const MyReco = () => {
 
 
 
+  const handleDelete= id=> {
+    fetch(`http://localhost:9000/recodelete/${id}`, {
+      method: "DELETE"
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+    })
+  }
+
+
   return (
     <div>
       <div className="container p-2 mx-auto sm:p-4 dark:text-gray-800">
@@ -56,7 +67,7 @@ const MyReco = () => {
           <p>{data?.currentDate}</p>
 					</td>
 					<td className="p-3 ">
-					<button className="bg-white px-4 py-2 border-1 border-">Delete</button>
+					<button onClick={()=> handleDelete(data._id)} className="bg-white px-4 py-2 border-1 border-">Delete</button>
 					</td>
 					
 				</tr>
