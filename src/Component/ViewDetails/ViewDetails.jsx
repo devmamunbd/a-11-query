@@ -1,16 +1,67 @@
 /* eslint-disable no-unused-vars */
+import { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom"
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const ViewDetails = () => {
 
     const loadData = useLoaderData()
     const {_id, pname, brand, query, image, count, boycott, currentDate, name, email, photoURL} = loadData;
-    console.log(loadData)
+    // console.log(loadData)
+    const {user} = useContext(AuthContext)
+    const [recoCount, setRecoCount] = useState(0)
+    const increaseCount=()=> {
+      const sum = recoCount + 1
+      setRecoCount(sum)
 
+    }
 
 	const handleRecomended = e => {
 		e.preventDefault()
 		const form = e.target;
+    const RecommenderName = user?.displayName;
+    const RecommenderEmail = user?.email;
+    const photo = user?.photoURL;
+    const userEmail = email;
+    const userName = name;
+    const queryId = _id;
+    const queryTitle = query;
+    const recotitle = form.recotitle.value;
+    const recoimage = form.recoimage.value;
+    const recopname = form.recopname.value;
+    const reason = form.reason.value;
+    const date = new Date()
+    const currentDate = date.toLocaleString()
+    const  recoInfo = {RecommenderName,RecommenderEmail,userEmail, userName, queryId, name, photo, recotitle, recoimage, recopname, reason, currentDate} ;
+    // console.log(recoInfo)
+
+    if (RecommenderEmail === userEmail) {
+      return toast.error("Action Not Permited")
+    }
+
+    axios.post('http://localhost:9000/addreco', recoInfo)
+    .then(result => {
+      console.log(result)
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "Add Recommendation Is Done",
+        showConfirmButton: false,
+        timer: 1500
+      });
+      // form('')
+      increaseCount()
+    })
+    .catch(error => {
+      console.log(error)
+    })
+
+
 	}
 
 
@@ -24,7 +75,7 @@ const ViewDetails = () => {
 			<div className="p-6 space-y-2 lg:col-span-5">
 				<h3 className="text-2xl font-semibold sm:text-4xl">{pname}</h3>
 				
-				<span className="text-xl dark:text-gray-600">Date: {new Date(currentDate).toLocaleDateString()}</span> <br />
+				<span className="text-xl dark:text-gray-600">Date: {new Date(currentDate).toLocaleString()}</span> <br />
 				<span className="text-xl dark:text-gray-600">Brand: {brand}</span>
 				<p className="text-xl dark:text-gray-600">Query Title: {query}</p>
 				<p className="text-xl dark:text-gray-600">Boycott Reason: {boycott}</p>
@@ -38,6 +89,9 @@ const ViewDetails = () => {
 					<p><span className="text-black font-semibold">User Name:</span> {name}</p>
 					<p><span className="text-black font-semibold">User Email:</span> {email}</p>
 					</div>
+          <div className="">
+            <h1 className="text-2xl text-black">Recommended Count: {recoCount} </h1>
+          </div>
 				</div>
 
 
@@ -76,7 +130,7 @@ const ViewDetails = () => {
           </div>
           <div>
             <label htmlFor="">Recommendation Reason</label> <br />
-           <textarea className="w-[400px] outline-none mt-1" name="recoreason" id="" cols="10" rows="1" placeholder="Recommendation Reason"></textarea>
+           <textarea className="w-[400px] outline-none mt-1" name="reason" id="" cols="10" rows="1" placeholder="Recommendation Reason"></textarea>
           </div>
           {/* <div>
             <label htmlFor="">Recommendation Count</label> <br />
@@ -91,7 +145,7 @@ const ViewDetails = () => {
         </form>
       </div>
     </div>
-
+    <ToastContainer />
     </div>
   )
 }

@@ -19,7 +19,8 @@ const AddQueries = () => {
     const name = user?.displayName;
     const email = user?.email;
     const photoURL = user?.photoURL;
-    const currentDate = new Date(Date.now())
+    const date = new Date()
+    const currentDate = date.toLocaleString()
 
     const userInfo = {name, email, photoURL, currentDate}
     const addQueri = {pname, brand, image, query, email, boycott, count,currentDate,name, photoURL, userInfo}
