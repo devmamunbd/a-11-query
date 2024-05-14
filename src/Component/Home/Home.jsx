@@ -57,7 +57,7 @@ const Home = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
           {
             sortedData.map(data => <div key={data._id}>
-              <div className="flex flex-col p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-50 dark:text-gray-800">
+              <div className="flex flex-col gap-5 p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-50 dark:text-gray-800">
 	<div className="flex space-x-4">
 		<img alt="" src={data?.photoURL} className="object-contain w-12 h-12 rounded-full shadow dark:bg-gray-500" />
 		<div className="flex flex-col space-y-1">
@@ -66,7 +66,7 @@ const Home = () => {
 		</div>
 	</div>
 	<div>
-		<img src={data?.image} alt="" className="object-contain w-full mb-4 h-60 sm:h-96 dark:bg-gray-500" />
+		<img src={data?.image} alt="" className="object-contain w-52 md:w-full mb-4 h-60 sm:h-96 dark:bg-gray-500" />
 		<h2 className="mb-1 text-xl font-semibold">Product Name: {data?.pname}</h2>
 		<p className="text-sm dark:text-gray-600">Query Title: {data?.query}</p>
 	</div>

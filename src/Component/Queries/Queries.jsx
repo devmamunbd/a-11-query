@@ -7,16 +7,17 @@ const Queries = () => {
 	const [itemPerPages, setItemPerPages] = useState(6)
 	const [currentPage, setCurrentPage] = useState(1)
 	const [count, setCount] = useState(0)
+	const [search, setSearch] = useState('')
 	const [loadData, setLoadData] = useState([])
 
 
 	useEffect(()=> {
-		fetch(`http://localhost:9000/all-queries?page=${currentPage}&size=${itemPerPages}`)
+		fetch(`http://localhost:9000/all-queries?page=${currentPage}&size=${itemPerPages}&search=${search}`)
 		.then(res => res.json())
 		.then(data => {
 			setLoadData(data)
 		})
-	},[currentPage, itemPerPages])
+	},[currentPage, itemPerPages, search])
 
 //   const loadData = useLoaderData()
   const sortedData = loadData.sort((a,b)=> new Date(b.currentDate) - new Date(a.currentDate))
@@ -27,12 +28,12 @@ const Queries = () => {
 	// console.log(count)
 
 useEffect(()=> {
-		fetch('http://localhost:9000/queries-count')
+		fetch(`http://localhost:9000/queries-count?search=${search}`)
 		.then(res => res.json())
 		.then(data => {
 			setCount(data.count)
 		})
-},[])
+},[search])
 // console.log(count)
 
 const numberOfPage = Math.ceil(count / itemPerPages)
@@ -45,17 +46,22 @@ const handlePagination= (value)=> {
 }
 
 
-	// const handleSaerch = value => {
+const handleSaerch = e => {
+	e.preventDefault()
+	const text = e.target.search.value;
+	setSearch(text)
+}
 
-	// }
+
+// console.log(search)
 
   return (
     <div>
       <h1 className="text-center text-black font-bold text-2xl mb-5">All Queries</h1>
-	<form action="">
+	<form onSubmit={handleSaerch} action="">
 		<div className="flex justify-center items-center gap-4">
-			<input className=" border-[1px] border-cyan-500 outline-0" type="text" placeholder="Enter Product Name" />
-			<button className="bg-black px-8 py-2 text-white" type="submit">Search</button>
+			<input name="search" className=" border-[1px] w-96 border-cyan-500 outline-0" type="text" placeholder="Enter Product Name" />
+			<button className="bg-black font-semibold rounded-md px-10 py-2 text-white" type="submit">Search</button>
 		</div>
 	</form>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
@@ -70,7 +76,7 @@ const handlePagination= (value)=> {
 		</div>
 	</div>
 	<div>
-		<img src={data?.image} alt="" className="object-contain w-full mb-4 h-60 sm:h-96 dark:bg-gray-500" />
+		<img src={data?.image} alt="" className="object-contain w-52 md:w-full mb-4 h-60 sm:h-96 dark:bg-gray-500" />
 		<h2 className="mb-1 text-xl font-semibold">Product Name: {data?.pname}</h2>
 		<p className="text-sm dark:text-gray-600">Query Title: {data?.query}</p>
 	</div>
@@ -79,7 +85,7 @@ const handlePagination= (value)=> {
 		<h3>Boycott Reasson: {data?.boycott}</h3>
 		<h3>Recommendation Count: {data?.count}</h3>
 	</div>
-  <Link to={`/details/${data._id}`}> <button className="w-full py-3 bg-black text-white">Recommend</button> </Link>
+  <Link to={`/details/${data._id}`}> <button className=" w-52 md:w-full py-3 bg-black text-white">Recommend</button> </Link>
 </div>
             </div>)
           }
