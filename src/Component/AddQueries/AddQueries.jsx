@@ -24,9 +24,9 @@ const AddQueries = () => {
 
     const userInfo = {name, email, photoURL, currentDate}
     const addQueri = {pname, brand, image, query, email, boycott, count,currentDate,name, photoURL, userInfo}
-    console.log(addQueri)
+    // console.log(addQueri)
 
-    axios.post('http://localhost:9000/addquerie', addQueri)
+    axios.post('https://assignment-eleven.vercel.app/addquerie', addQueri)
     .then(result => {
       console.log(result)
       Swal.fire({

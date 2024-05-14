@@ -19,7 +19,7 @@ const UpdateCart = () => {
     const upInfo = {pname, brand, image, query, boycott, count}
     console.log(upInfo)
 
-        fetch(`http://localhost:9000/update/${_id}`, {
+        fetch(`https://assignment-eleven.vercel.app/update/${_id}`, {
             method: "PUT",
             headers: {
                 "content-type": 'application/json'

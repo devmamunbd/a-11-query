@@ -1,8 +1,17 @@
-# React + Vite
+## Online Shop Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Features
+- It is a Online Shop Website, we showcase some product. 
+- On this site you can register and login with your correct information and later you can avail all kinds of benefits from our websites.
+- Atfer User Login/Register, he can add the Query with his desired information.
+- And you can go to queries added by others and recommended good Products to them.
+- You can see the specifically who you are recommending. And you can see what products others are recommending.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Challenge task.
+- JSON Web Token
+- 
+
+
+## Live Site: 

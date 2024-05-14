@@ -1,15 +1,63 @@
+/* eslint-disable no-unused-vars */
+import { useEffect, useState } from "react"
 import { Link, useLoaderData } from "react-router-dom"
 
 const Queries = () => {
 
-  const loadData = useLoaderData()
+	const [itemPerPages, setItemPerPages] = useState(6)
+	const [currentPage, setCurrentPage] = useState(1)
+	const [count, setCount] = useState(0)
+	const [loadData, setLoadData] = useState([])
+
+
+	useEffect(()=> {
+		fetch(`http://localhost:9000/all-queries?page=${currentPage}&size=${itemPerPages}`)
+		.then(res => res.json())
+		.then(data => {
+			setLoadData(data)
+		})
+	},[currentPage, itemPerPages])
+
+//   const loadData = useLoaderData()
   const sortedData = loadData.sort((a,b)=> new Date(b.currentDate) - new Date(a.currentDate))
 //   console.log(sortedData)
+	useEffect(()=> {
+	setCount(sortedData.length)
+	},[sortedData.length])
+	// console.log(count)
 
+useEffect(()=> {
+		fetch('http://localhost:9000/queries-count')
+		.then(res => res.json())
+		.then(data => {
+			setCount(data.count)
+		})
+},[])
+// console.log(count)
+
+const numberOfPage = Math.ceil(count / itemPerPages)
+const pages = [...Array(numberOfPage).keys()].map(element => element + 1)
+
+
+const handlePagination= (value)=> {
+	console.log(value)
+	setCurrentPage(value)
+}
+
+
+	// const handleSaerch = value => {
+
+	// }
 
   return (
     <div>
-      <h1 className="text-center text-black font-bold text-2xl">All Queries</h1>
+      <h1 className="text-center text-black font-bold text-2xl mb-5">All Queries</h1>
+	<form action="">
+		<div className="flex justify-center items-center gap-4">
+			<input className=" border-[1px] border-cyan-500 outline-0" type="text" placeholder="Enter Product Name" />
+			<button className="bg-black px-8 py-2 text-white" type="submit">Search</button>
+		</div>
+	</form>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
           {
             sortedData.map(data => <div key={data._id}>
@@ -36,6 +84,23 @@ const Queries = () => {
             </div>)
           }
         </div>
+
+		{/* pagination */}
+		<div className="mt-5">
+			<h1 className="text-center font-bold text-black mb-4">Pagination</h1>
+
+			<div className="flex gap-5 text-white justify-center">
+				<button disabled={currentPage === 1} onClick={()=> handlePagination(currentPage - 1)} className="bg-black px-7 py-1 disabled:bg-gray-500">Prev..</button>
+				<div  className="flex gap-4">
+					{
+						pages.map(page => <div key={page}>
+							<button onClick={()=>handlePagination(page)} className={` ${currentPage === page ? 'bg-blue-500 text-white px-3 py-2' : 'bg-black text-white px-3 py-2'}`}>{page}</button>
+						</div>)
+					}
+				</div>
+				<button disabled={currentPage === numberOfPage} onClick={()=> handlePagination(currentPage + 1)} className="bg-black px-7 py-1 disabled:bg-gray-500">Next..</button>
+			</div>
+		</div>
     </div>
   )
 }

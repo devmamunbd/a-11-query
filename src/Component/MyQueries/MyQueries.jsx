@@ -12,7 +12,7 @@ const MyQueries = () => {
   const [items, setItems] = useState([])
 
   useEffect(()=> {
-    fetch(`http://localhost:9000/queries/${user?.email}`)
+    fetch(`https://assignment-eleven.vercel.app/queries/${user?.email}`, {credentials: "include"})
     .then(res => res.json())
     .then(data => {
       setItems(data)
@@ -30,7 +30,7 @@ const MyQueries = () => {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:9000/delete/${id}`, {
+        fetch(`https://assignment-eleven.vercel.app/delete/${id}`, {
           method: "DELETE"
         })
         .then(res => res.json())

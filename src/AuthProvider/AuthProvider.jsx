@@ -4,6 +4,7 @@ import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndP
 import { createContext, useEffect, useState } from "react"
 import { auth } from './../firebase.init';
 import { GoogleAuthProvider } from "firebase/auth";
+import axios from "axios";
 
   export const AuthContext = createContext(null)
   const googleProvider = new GoogleAuthProvider()
@@ -49,9 +50,26 @@ const AuthProvider = ({children}) => {
 
     useEffect(()=> {
       const unSubscribe = onAuthStateChanged(auth, currentUser=> {
-        console.log('on auth change', currentUser)
+        const userEmail = currentUser?.email || user?.email;
+        const loggedUser = {email: userEmail}
         setUser(currentUser)
+        console.log('on auth change', currentUser)
         setLoading(false)
+
+        if (currentUser) {
+          axios.post('https://assignment-eleven.vercel.app/jwt', loggedUser, {withCredentials: true})
+          .then(res => {
+            console.log(res.data)
+          })
+        }
+        
+        else{
+          axios.post('https://assignment-eleven.vercel.app/logout', loggedUser, {withCredentials: true})
+          .then(res=> {
+            console.log(res.data)
+          })
+        }
+
       });
       return ()=> {
         unSubscribe

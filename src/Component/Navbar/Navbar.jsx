@@ -25,13 +25,13 @@ const Navbar = () => {
     <li><NavLink to='/'>Home</NavLink></li>
     <li><NavLink to='/queries'>Queries</NavLink></li>
     {
-      user &&  <li><NavLink to='/recoforme'>Reco For Me</NavLink></li>
+      user &&  <li><NavLink to='/recoforme'>Recommend For Me</NavLink></li>
     }
     {
       user &&  <li><NavLink to='/myqueries'>My Queries</NavLink></li>
     }
     {
-      user &&   <li><NavLink to='/myreco'>My Reco</NavLink></li>
+      user &&   <li><NavLink to='/myreco'>My Recommend</NavLink></li>
     }
     
     <li><NavLink to='/register'>Register</NavLink></li>
@@ -55,7 +55,10 @@ const Navbar = () => {
         {navlink}
       </ul>
     </div>
+    <div className="flex items-center">
+    <img className="w-12 h-12" src="/nlogo.png" alt="" />
     <Link to='/' className="font-bold text-2xl">BD <span className="text-blue-500">Shop</span></Link>
+    </div>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">

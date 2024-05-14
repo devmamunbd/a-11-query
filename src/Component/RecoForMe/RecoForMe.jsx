@@ -7,7 +7,7 @@ const RecoForMe = () => {
   const [datas, setDatas] = useState([])
 
   useEffect(()=> {
-    fetch(`http://localhost:9000/recoforme/${user?.email}`)
+    fetch(`https://assignment-eleven.vercel.app/recoforme/${user?.email}`)
     .then(res => res.json())
     .then(data => {
       console.log(data)

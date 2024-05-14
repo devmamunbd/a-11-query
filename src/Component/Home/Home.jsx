@@ -81,7 +81,40 @@ const Home = () => {
         </div>
       </div>
 
+        <div className="mt-10 ">
+        <section className="bg-white shadow-md">
+	<div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:gap-7">
+		<div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
+			<img src="/form.jpg" alt="" className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128" />
+		</div>
+		<div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
+		
+      <div>
+        <h1 className="text-2xl font-bold leading-none mb-6">Contact Us</h1>
+        </div>
+			<div className="flex flex-col gap-2">
+			<div>
+        <label htmlFor="">Full Name</label> <br />
+        <input className="w-80 px-2" type="text" placeholder="Full Name" />
+      </div>
+			<div>
+        <label htmlFor="">Email</label> <br />
+        <input className="w-80 px-2" type="text" placeholder="Email" />
+      </div>
+			<div>
+        <label htmlFor="">Message</label> <br />
+        <textarea className="w-80 px-2" name="" id="" cols="12" rows="2">Message</textarea>
+      </div>
+			<div>
+       <button className="w-80 h-10 bg-blue-500 text-white font-semibold">Submit</button>
+      </div>
 
+
+			</div>
+		</div>
+	</div>
+</section>
+        </div>
    
     </div>
   )

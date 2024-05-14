@@ -4,6 +4,7 @@ import { FaGoogle } from "react-icons/fa";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 
 
@@ -30,6 +31,7 @@ const Login = () => {
         showConfirmButton: false,
         timer: 1500
       });
+     
     })
     .catch(error => {
       setError("email and password dosent match")
@@ -42,6 +44,7 @@ const Login = () => {
     singInGoogle()
     .then(result => {
       console.log(result.user)
+     
     })
     .catch(error => {
       console.log(error)
@@ -80,6 +83,8 @@ const Login = () => {
           </div>
         </form>
 
+
+         <h1 className="text-center mb-2 font-bold">Or</h1>
         <div className="px-10">
           <button onClick={handleGoogle} className="bg-black text-white py-3 w-full">
           <FaGoogle  className="mx-auto"/>

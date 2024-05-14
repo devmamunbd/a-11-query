@@ -22,12 +22,12 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: ()=> fetch('http://localhost:9000/recent')
+                loader: ()=> fetch('https://assignment-eleven.vercel.app/recent')
             },
             {
                 path: '/queries',
                 element: <Queries></Queries>,
-                loader: ()=> fetch('http://localhost:9000/queries')
+                // loader: ()=> fetch('http://localhost:9000/all-queries?page=${currentPage}&size=${setItemPerPages}')
             },
             {
                 path: '/recoforme',
@@ -51,17 +51,17 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/add',
-                element: <AddQueries></AddQueries>
+                element: <PrivateRoutes> <AddQueries></AddQueries></PrivateRoutes>
             },
             {
                 path: '/details/:id',
                 element: <PrivateRoutes><ViewDetails></ViewDetails></PrivateRoutes>,
-                loader: ({params})=> fetch(`http://localhost:9000/details/${params.id}`)
+                loader: ({params})=> fetch(`https://assignment-eleven.vercel.app/details/${params.id}`)
             }, 
             {
                 path: '/update/:id',
                 element: <UpdateCart></UpdateCart>,
-                loader: ({params}) => fetch(`http://localhost:9000/update/${params.id}`)
+                loader: ({params}) => fetch(`https://assignment-eleven.vercel.app/update/${params.id}`)
             }
 
         ]

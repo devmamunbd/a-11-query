@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom"
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import axios from "axios";
@@ -9,11 +9,23 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 const ViewDetails = () => {
+  const loadData = useLoaderData()
+  const {_id, pname, brand, query, image, count, boycott, currentDate, name, email, photoURL} = loadData;
+  const [comment, setComment] = useState([])
 
-    const loadData = useLoaderData()
-    const {_id, pname, brand, query, image, count, boycott, currentDate, name, email, photoURL} = loadData;
-    // console.log(loadData)
-    const {user} = useContext(AuthContext)
+  useEffect(()=> {
+      axios.get(`https://assignment-eleven.vercel.app/commend/${_id}`)
+      .then(res => {
+        setComment(res.data)
+      })
+      .catch(error => {
+        console.log(error.message)
+      })
+    
+  }, [_id])
+
+
+  const {user} = useContext(AuthContext)
     const [recoCount, setRecoCount] = useState(0)
     const increaseCount=()=> {
       const sum = recoCount + 1
@@ -40,11 +52,11 @@ const ViewDetails = () => {
     const  recoInfo = {RecommenderName,RecommenderEmail,userEmail, userName, queryId, name, photo, recotitle, recoimage, recopname, reason, currentDate} ;
     // console.log(recoInfo)
 
-    if (RecommenderEmail === userEmail) {
-      return toast.error("Action Not Permited")
-    }
+    // if (RecommenderEmail === userEmail) {
+    //   return toast.error("Action Not Permited")
+    // }
 
-    axios.post('http://localhost:9000/addreco', recoInfo)
+    axios.post('https://assignment-eleven.vercel.app/addreco', recoInfo)
     .then(result => {
       console.log(result)
       Swal.fire({
@@ -64,6 +76,8 @@ const ViewDetails = () => {
 
 	}
 
+
+  
 
 
   return (
@@ -94,10 +108,27 @@ const ViewDetails = () => {
           </div>
 				</div>
 
-
 			</div>
 		</a>
-		
+		<div>
+     {
+      comment.map(com => <div key={com._id}>
+          <div className="flex mt-4 flex-col gap-4 bg-white shadow-md p-5">
+            <div>
+            <img className="w-12 h-12 rounded-full" src={com.photo} alt="" />
+            <h3>Name: {com.RecommenderName}</h3>
+            <p>Date: {com.currentDate}</p>
+            </div>
+            <div className="">
+          <img className="w-32 h-32" src={com.recoimage} alt="" />
+          <h1><span className="text-black font-bold">Product Name: </span>{com.recopname}</h1>
+          <p><span className="text-black font-bold">Recommend Reason:</span> {com.reason}</p>
+            </div>
+          </div>
+         
+      </div>)
+     }
+    </div>
 	</div>
 </section>
 

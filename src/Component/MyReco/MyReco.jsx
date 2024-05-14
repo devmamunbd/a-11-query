@@ -6,7 +6,7 @@ const MyReco = () => {
   const {user} = useContext(AuthContext)
   const [datas, setDatas] = useState([])
   useEffect(()=> {
-    fetch(`http://localhost:9000/myreco/${user?.email}`)
+    fetch(`https://assignment-eleven.vercel.app/myreco/${user?.email}`)
     .then(res => res.json())
     .then(data => {
      setDatas(data)
@@ -16,7 +16,7 @@ const MyReco = () => {
 
 
   const handleDelete= id=> {
-    fetch(`http://localhost:9000/recodelete/${id}`, {
+    fetch(`https://assignment-eleven.vercel.app/recodelete/${id}`, {
       method: "DELETE"
     })
     .then(res => res.json())
