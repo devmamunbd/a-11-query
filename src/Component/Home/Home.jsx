@@ -57,7 +57,7 @@ const Home = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
           {
             sortedData.map(data => <div key={data._id}>
-              <div className="flex flex-col gap-5 p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-50 dark:text-gray-800">
+              <div className="flex flex-col h-[800px] gap-5 p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-50 dark:text-gray-800">
 	<div className="flex space-x-4">
 		<img alt="" src={data?.photoURL} className="object-contain w-12 h-12 rounded-full shadow dark:bg-gray-500" />
 		<div className="flex flex-col space-y-1">
@@ -68,11 +68,11 @@ const Home = () => {
 	<div>
 		<img src={data?.image} alt="" className="object-contain w-52 md:w-full mb-4 h-60 sm:h-96 dark:bg-gray-500" />
 		<h2 className="mb-1 text-xl font-semibold">Product Name: {data?.pname}</h2>
-		<p className="text-sm dark:text-gray-600">Query Title: {data?.query}</p>
+		<p className="text-sm dark:text-gray-600"><span className="text-black font-bold">Query Title: </span>{data?.query}</p>
 	</div>
 	<div className="mt-4">
-		<h3>Brand Name: {data?.brand}</h3>
-		<h3>Boycott Reasson: {data?.boycott}</h3>
+		<h3><span className="font-bold text-black">Brand Name: </span>{data?.brand}</h3>
+		<h3> <span className="text-black font-bold">Boycott Reasson: </span>{data?.boycott}</h3>
 		
 	</div>
 </div>

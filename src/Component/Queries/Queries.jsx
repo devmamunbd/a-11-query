@@ -12,7 +12,7 @@ const Queries = () => {
 
 
 	useEffect(()=> {
-		fetch(`http://localhost:9000/all-queries?page=${currentPage}&size=${itemPerPages}&search=${search}`)
+		fetch(`https://assignment-eleven.vercel.app/all-queries?page=${currentPage}&size=${itemPerPages}&search=${search}`)
 		.then(res => res.json())
 		.then(data => {
 			setLoadData(data)
@@ -28,7 +28,7 @@ const Queries = () => {
 	// console.log(count)
 
 useEffect(()=> {
-		fetch(`http://localhost:9000/queries-count?search=${search}`)
+		fetch(`https://assignment-eleven.vercel.app/queries-count?search=${search}`)
 		.then(res => res.json())
 		.then(data => {
 			setCount(data.count)
