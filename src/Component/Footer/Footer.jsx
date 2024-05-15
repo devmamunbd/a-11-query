@@ -1,8 +1,8 @@
 
 const Footer = () => {
   return (
-    <div>
-        <footer className="footer footer-center p-10 bg-black text-primary-content">
+    <div className="">
+        <footer className="footer w-[1200px] md:w-[1200px] footer-center p-10 bg-black text-primary-content">
   <aside>
     <img src="/logo.png" alt="" />
     <p className="font-bold">

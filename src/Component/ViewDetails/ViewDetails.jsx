@@ -22,7 +22,7 @@ const ViewDetails = () => {
         console.log(error.message)
       })
     
-  }, [_id])
+  }, [_id, comment])
 
 
   const {user} = useContext(AuthContext)

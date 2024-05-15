@@ -47,7 +47,7 @@ const UpdateCart = () => {
   return (
     <div>
     <div className="bg-white shadow-md ">
-<h1 className="text-center text-2xl font-bold p-4">Add Queries</h1>
+<h1 className="text-center text-2xl font-bold p-4">Add Query</h1>
 
 <form 
 onSubmit={handleUpdateQueris}

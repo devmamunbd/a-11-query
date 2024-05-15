@@ -7,6 +7,8 @@
 - And you can go to queries added by others and recommended good Products to them.
 - You can see the specifically who you are recommending. And you can see what products others are recommending.
 
+## And Selected Category
+- Assignment Category 0009
 
 
 ## Challenge task.

@@ -57,7 +57,7 @@ const Home = () => {
         <div className="grid grid-cols-1 place-items-center md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
           {
             sortedData.map(data => <div key={data._id}>
-              <div className="flex flex-col  w-96 lg:w-[350px] h-[800px] gap-5 p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-50 dark:text-gray-800">
+              <div className="flex flex-col  w-[300px] lg:w-[350px] h-[800px] gap-5 p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-50 dark:text-gray-800">
 	<div className="flex space-x-4">
 		<img alt="" src={data?.photoURL} className="object-contain w-12 h-12 rounded-full shadow dark:bg-gray-500" />
 		<div className="flex flex-col space-y-1">
@@ -83,7 +83,7 @@ const Home = () => {
 
         <div className="mt-10 ">
         <section className="bg-white shadow-md">
-	<div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:gap-7">
+	<div className="container flex flex-col md:flex-row lg:flex-row justify-center items-center p-6 mx-auto sm:py-12 lg:py-24 lg:gap-7">
 		<div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
 			<img src="/form.jpg" alt="" className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128" />
 		</div>
