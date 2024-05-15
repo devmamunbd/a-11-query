@@ -60,14 +60,14 @@ const handleSaerch = e => {
       <h1 className="text-center text-black font-bold text-2xl mb-5">All Queries</h1>
 	<form onSubmit={handleSaerch} action="">
 		<div className="flex justify-center items-center gap-4">
-			<input name="search" className=" border-[1px] w-96 border-cyan-500 outline-0" type="text" placeholder="Enter Product Name" />
+			<input name="search" className=" border-[1px] sm:w-60 md:w-96 border-cyan-500 outline-0" type="text" placeholder="Enter Product Name" />
 			<button className="bg-black font-semibold rounded-md px-10 py-2 text-white" type="submit">Search</button>
 		</div>
 	</form>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
+      <div className="grid grid-cols-1 place-items-center md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
           {
             sortedData.map(data => <div key={data._id}>
-              <div className="flex flex-col h-[820px] p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-50 dark:text-gray-800">
+              <div className="flex flex-col justify-center w-96 lg:w-[350px] h-[820px] p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-50 dark:text-gray-800">
 	<div className="flex space-x-4">
 		<img alt="" src={data?.photoURL} className="object-contain w-12 h-12 rounded-full shadow dark:bg-gray-500" />
 		<div className="flex flex-col space-y-1">

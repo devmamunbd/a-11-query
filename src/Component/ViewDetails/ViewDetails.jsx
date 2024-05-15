@@ -110,10 +110,10 @@ const ViewDetails = () => {
 
 			</div>
 		</a>
-		<div>
+		<div className="">
      {
       comment.map(com => <div key={com._id}>
-          <div className="flex mt-4 flex-col gap-4 bg-white shadow-md p-5">
+          <div className="flex mt-4 flex-col justify-center gap-4 bg-white shadow-md p-5">
             <div>
             <img className="w-12 h-12 rounded-full" src={com.photo} alt="" />
             <h3>Name: {com.RecommenderName}</h3>
@@ -171,7 +171,7 @@ const ViewDetails = () => {
         
           </div>
           <div className="p-10 flex flex-col justify-center items-center mx-auto">
-          <button className='bg-black py-3 text-white w-[820px] '>Add Recommendation</button>
+          <button className='bg-black py-3 text-white sm:w-[300px] md:w-[600px] lg:w-[820px] '>Add Recommendation</button>
           </div>
         </form>
       </div>

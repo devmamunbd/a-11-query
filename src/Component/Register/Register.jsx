@@ -44,7 +44,7 @@ const Register = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 p-10">
+      <div className="grid grid-cols-1 sm:gap-6 md:gap-0 md:grid-cols-2 lg:grid-cols-2 p-10">
       <div>
         <img src="regi.jpg" alt="" />
       </div>

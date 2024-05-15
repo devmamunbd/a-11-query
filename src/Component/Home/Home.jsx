@@ -13,23 +13,23 @@ const Home = () => {
       <div className="mt-10 mb-10">
 
        {/* slider */}
-      <div className="carousel w-full h-[550px]">
+      <div className="carousel ">
   <div id="slide1" className="carousel-item relative w-full">
-    <img src="/slider1.jpg" className="w-full rounded-lg" />
+    <img src="/slider1.jpg" className="sm:w-[500px] flex flex-col justify-center mx-auto md:w-full lg:w-full rounded-lg" />
     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
       <a href="#slide4" className="btn btn-circle">❮</a> 
       <a href="#slide2" className="btn btn-circle">❯</a>
     </div>
   </div> 
   <div id="slide2" className="carousel-item relative w-full">
-    <img src="/slider2.jpg" className="w-full rounded-lg" />
+    <img src="/slider2.jpg" className="sm:w-[500px] flex flex-col justify-center mx-auto md:w-full lg:w-full rounded-lg" />
     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
       <a href="#slide1" className="btn btn-circle">❮</a> 
       <a href="#slide3" className="btn btn-circle">❯</a>
     </div>
   </div> 
   <div id="slide3" className="carousel-item relative w-full">
-    <img src="/slider3.jpg" className="w-full rounded-lg" />
+    <img src="/slider3.jpg" className="sm:w-[500px] flex flex-col justify-center mx-auto md:w-full lg:w-full rounded-lg" />
     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
       <a href="#slide2" className="btn btn-circle">❮</a> 
       <a href="#slide4" className="btn btn-circle">❯</a>
@@ -41,8 +41,8 @@ const Home = () => {
       {/* banner */}
     <div className="mt-10 ">
       <div className="relative">
-      <img className="w-full h-[500px] rounded-lg" src="HomeBanner.jpg" alt="" />
-      <div className="absolute flex justify-center items-center top-[47%] left-[45%]">
+      <img className="sm:w-[700px] md:w-full lg:w-full h-[500px] flex flex-col justify-center mx-auto rounded-lg" src="HomeBanner.jpg" alt="" />
+      <div className="absolute flex justify-center items-center  top-[40%] left-[43%]  md:top-[47%] md:left-[45%]">
       <Link to="/queries" type="button" className="px-8 py-3 font-semibold border rounded text-white">All Queries</Link>
       </div>
       </div>
@@ -54,10 +54,10 @@ const Home = () => {
       <div className="mt-10">
         <h1 className="text-3xl text-black text-center font-bold">Recent Queries</h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
+        <div className="grid grid-cols-1 place-items-center md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
           {
             sortedData.map(data => <div key={data._id}>
-              <div className="flex flex-col h-[800px] gap-5 p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-50 dark:text-gray-800">
+              <div className="flex flex-col  w-96 lg:w-[350px] h-[800px] gap-5 p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-50 dark:text-gray-800">
 	<div className="flex space-x-4">
 		<img alt="" src={data?.photoURL} className="object-contain w-12 h-12 rounded-full shadow dark:bg-gray-500" />
 		<div className="flex flex-col space-y-1">
@@ -92,17 +92,17 @@ const Home = () => {
       <div>
         <h1 className="text-2xl font-bold leading-none mb-6">Contact Us</h1>
         </div>
-			<div className="flex flex-col gap-2">
+			<div className="flex text-left flex-col gap-2">
 			<div>
-        <label htmlFor="">Full Name</label> <br />
+        <label className="text-left" htmlFor="">Full Name</label> <br />
         <input className="w-80 px-2" type="text" placeholder="Full Name" />
       </div>
 			<div>
-        <label htmlFor="">Email</label> <br />
+        <label className="text-left" htmlFor="">Email</label> <br />
         <input className="w-80 px-2" type="text" placeholder="Email" />
       </div>
 			<div>
-        <label htmlFor="">Message</label> <br />
+        <label className="text-left" htmlFor="">Message</label> <br />
         <textarea className="w-80 px-2" name="" id="" cols="12" rows="2">Message</textarea>
       </div>
 			<div>
