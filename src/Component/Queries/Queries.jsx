@@ -21,11 +21,10 @@ const Queries = () => {
 
 //   const loadData = useLoaderData()
   const sortedData = loadData.sort((a,b)=> new Date(b.currentDate) - new Date(a.currentDate))
-//   console.log(sortedData)
-	useEffect(()=> {
+
+  useEffect(()=> {
 	setCount(sortedData.length)
 	},[sortedData.length])
-	// console.log(count)
 
 useEffect(()=> {
 		fetch(`https://assignment-eleven.vercel.app/queries-count?search=${search}`)
@@ -34,14 +33,12 @@ useEffect(()=> {
 			setCount(data.count)
 		})
 },[search])
-// console.log(count)
 
 const numberOfPage = Math.ceil(count / itemPerPages)
 const pages = [...Array(numberOfPage).keys()].map(element => element + 1)
 
 
 const handlePagination= (value)=> {
-	console.log(value)
 	setCurrentPage(value)
 }
 
@@ -53,7 +50,6 @@ const handleSaerch = e => {
 }
 
 
-// console.log(search)
 
   return (
     <div>

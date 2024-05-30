@@ -35,7 +35,7 @@ const Login = () => {
     })
     .catch(error => {
       setError("email and password dosent match")
-      console.log(error)
+      // console.log(error)
     })
     setError('')
   }

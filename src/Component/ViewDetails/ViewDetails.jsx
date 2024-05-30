@@ -50,7 +50,6 @@ const ViewDetails = () => {
     const date = new Date()
     const currentDate = date.toLocaleString()
     const  recoInfo = {RecommenderName,RecommenderEmail,userEmail, userName, queryId, name, photo, recotitle, recoimage, recopname, reason, currentDate} ;
-    // console.log(recoInfo)
 
     // if (RecommenderEmail === userEmail) {
     //   return toast.error("Action Not Permited")

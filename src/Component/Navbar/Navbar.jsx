@@ -33,6 +33,9 @@ const Navbar = () => {
     {
       user &&   <li><NavLink to='/myreco'>My Recommend</NavLink></li>
     }
+    {
+      user &&   <li><NavLink to='/users'>All Users</NavLink></li>
+    }
     
     <li><NavLink to='/register'>Register</NavLink></li>
     <li><NavLink to='/login'>Log In</NavLink></li>

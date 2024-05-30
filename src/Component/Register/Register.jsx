@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import { Link, NavLink } from "react-router-dom";
+import axios from "axios";
 
 const Register = () => {
 
@@ -17,6 +18,10 @@ const Register = () => {
     const email = form.email.value;
     const photo = form.photo.value;
     const password = form.password.value;
+
+
+    const users = {name, email, photo}
+    axios.post('http://localhost:9000/users', users)
 
     // console.log(name,email,password,photo)
     createUser(email, password)

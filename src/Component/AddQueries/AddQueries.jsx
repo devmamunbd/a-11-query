@@ -24,7 +24,6 @@ const AddQueries = () => {
 
     const userInfo = {name, email, photoURL, currentDate}
     const addQueri = {pname, brand, image, query, email, boycott, count,currentDate,name, photoURL, userInfo}
-    // console.log(addQueri)
 
     axios.post('https://assignment-eleven.vercel.app/addquerie', addQueri)
     .then(result => {

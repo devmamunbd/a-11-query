@@ -53,7 +53,7 @@ const AuthProvider = ({children}) => {
         const userEmail = currentUser?.email || user?.email;
         const loggedUser = {email: userEmail}
         setUser(currentUser)
-        console.log('on auth change', currentUser)
+        // console.log('on auth change', currentUser)
         setLoading(false)
 
         if (currentUser) {

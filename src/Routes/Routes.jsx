@@ -12,6 +12,7 @@ import AddQueries from "../Component/AddQueries/AddQueries";
 import PrivateRoutes from "./PrivateRoutes";
 import ViewDetails from "../Component/ViewDetails/ViewDetails";
 import UpdateCart from "../Component/UpdateCart/UpdateCart";
+import AllUser from "../Component/AllUser/AllUser";
 
 export const router = createBrowserRouter([
     {
@@ -52,6 +53,10 @@ export const router = createBrowserRouter([
             {
                 path: '/add',
                 element: <PrivateRoutes> <AddQueries></AddQueries></PrivateRoutes>
+            },
+            {
+                path: '/users',
+                element: <AllUser></AllUser>
             },
             {
                 path: '/details/:id',
