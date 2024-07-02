@@ -1,5 +1,8 @@
 ## Online Shop Website
 
+## Project Overview
+This website is like an online social platform. Here you can login/register and post product image and inpormation. And others can come and comment on your post.
+
 ## Features
 - It is a Online Shop Website, we showcase some product. 
 - On this site you can register and login with your correct information and later you can avail all kinds of benefits from our websites.
